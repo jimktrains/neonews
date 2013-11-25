@@ -37,11 +37,48 @@ Authentication
 
 Authentication is done using [SRP(Secure Remote Password)](http://en.wikipedia.org/wiki/Secure_Remote_Password_protocol) ([RFC 2945](http://tools.ietf.org/html/rfc2945)) ([Official SRP Homepage](http://srp.stanford.edu/)).
 
-The safe prime shall be:
+The safe prime shall be (as generated from openssl dhparam -text 4096):
 
-The hash function shall be [SHA-256](http://tools.ietf.org/html/rfc4634).
+    00:92:eb:11:09:5e:4c:fa:59:74:b6:c2:7d:f6:b2:
+    5b:20:69:12:55:f2:df:eb:e2:cc:e3:08:9c:3a:1f:
+    f1:14:35:80:f6:c6:60:fc:9b:f7:16:35:12:6a:22:
+    57:27:44:d4:8b:e4:e3:1f:74:38:fd:43:8b:b5:11:
+    e3:81:89:c0:05:d6:2f:5f:12:21:52:d4:37:26:9a:
+    4c:69:7f:13:55:2d:03:91:2a:87:88:31:8f:c3:50:
+    e8:57:0f:47:5d:9a:31:82:06:a1:f1:ef:de:28:9c:
+    d0:50:4f:28:dc:3d:42:90:c1:68:42:4e:3c:66:58:
+    38:c8:4c:3e:e3:16:7a:25:25:8c:da:e7:79:71:22:
+    26:c3:58:f1:a7:c8:21:08:ea:0e:57:a5:15:02:74:
+    04:be:20:01:ee:5c:7c:c8:ac:ba:d1:8a:8f:4c:46:
+    cf:90:bf:03:cc:9c:e9:98:f0:e4:20:e9:02:2e:86:
+    e1:af:8a:dd:0c:59:b5:a5:91:3e:f6:17:57:23:39:
+    17:f5:a6:f9:eb:b5:08:46:62:84:b3:10:db:25:fd:
+    16:6d:3a:da:eb:72:79:d3:e7:17:e6:49:56:7b:ea:
+    fc:76:22:34:cd:47:0f:75:d5:7f:41:25:3f:e7:e9:
+    68:f2:c0:6f:1b:a4:20:d9:72:8f:6c:a0:1a:19:a9:
+    31:70:6f:a6:8d:36:14:d2:43:79:f5:08:ca:d2:bf:
+    a0:ef:47:6c:f6:da:39:d2:41:26:a3:af:f1:8f:c6:
+    8e:79:f7:e2:98:30:d5:f9:ec:d4:6c:ef:29:28:9d:
+    8d:0b:99:bb:64:51:ee:36:34:95:12:f4:26:eb:b7:
+    dc:57:9e:f9:c5:66:72:01:d8:4f:b8:f4:5c:f8:89:
+    92:60:73:71:19:64:98:c3:19:dc:60:b9:9b:67:f5:
+    36:ab:ce:2c:26:5b:b9:27:6f:33:9b:ab:e3:79:55:
+    40:56:3a:50:47:f6:35:ad:4e:c8:bc:73:ea:1d:c3:
+    1b:a8:ca:c4:35:d7:e6:5d:0e:e2:49:49:53:9f:10:
+    e9:21:ce:b3:80:ee:8b:81:69:95:66:12:11:cf:ad:
+    55:b1:a5:23:41:d4:54:54:2e:cd:01:23:1d:71:3f:
+    19:1c:2b:3c:2e:9d:d1:cc:4f:33:33:f6:a4:b2:92:
+    31:63:9b:b7:db:4e:85:c8:16:8d:35:3f:e0:3e:24:
+    fa:7d:b2:66:52:08:32:87:c7:67:97:81:d1:75:67:
+    f3:bf:91:07:d1:bf:b5:c3:f8:3b:96:40:d4:3a:14:
+    40:ce:2d:14:92:73:f6:72:1f:54:8e:19:4d:08:33:
+    98:63:cd:6b:e9:e1:5f:67:82:76:e1:11:89:69:a6:
+    f7:e2:03
+
 
 The generator shall be 2.
+
+The hash function shall be [SHA-256](http://tools.ietf.org/html/rfc4634).
 
 The k paremeter shall be k = H(N, g).
 
@@ -79,7 +116,9 @@ When an AUTHPROOF header is sent, the A, B, username, salt, and verifier can be 
 Message format
 --------------
 
-### Headers ####
+Messages shall be in MIME format.
+
+### NeoNews specific Headers ####
 
 * Required
  * Date - ISO 8601 Date message was created
