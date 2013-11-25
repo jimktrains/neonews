@@ -76,4 +76,3 @@ The B value is encrypted and sent in order to prevent servers from having to sha
 
 When an AUTHPROOF header is sent, the A, B, username, salt, and verifier can be used to verify that the session key was generated via an authentication session with the server.  The TOTP (and must be decryptable) will time-out the session.  Both the TOTP and the session key must be correct in order for the request to continue.
 
-
