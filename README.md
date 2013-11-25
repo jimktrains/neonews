@@ -76,3 +76,21 @@ The B value is encrypted and sent in order to prevent servers from having to sha
 
 When an AUTHPROOF header is sent, the A, B, username, salt, and verifier can be used to verify that the session key was generated via an authentication session with the server.  The TOTP (and must be decryptable) will time-out the session.  Both the TOTP and the session key must be correct in order for the request to continue.
 
+Message format
+--------------
+
+### Headers ####
+
+* Required
+ * Date - ISO 8601 Date message was created
+ * Message-ID - UUID
+ * Subject
+ * From
+ * Parent-ID - UUID or None
+ * Groups - Comma-delimited list of groups
+* Optional
+ * X-<anything> - Implementation defined. Should be ignored if unknown
+
+### Body ###
+
+Clients must be able to render UTF-8 plain text, [Markdown](http://daringfireball.net/projects/markdown/), [Textile](https://github.com/textile/textile-spec), [reStructuredText](http://docutils.sourceforge.net/docs/user/rst/quickstart.html), and HTML4/CSS2.
